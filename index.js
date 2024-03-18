@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 import express from "express";
 import postRoutes from "./routes/posts.js";
 import userRoutes from "./routes/users.js";
@@ -30,8 +32,9 @@ app.use("/api/posts", postRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 
+const PORT = process.env.PORT
 
 
-app.listen(8800, () => {
+app.listen(PORT, () => {
   console.log("Server is running on port 8800");
 });
