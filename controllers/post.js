@@ -86,17 +86,19 @@ export const updatePost = (req, res) => {
     const postId = req.params.id;
     const q =
       "UPDATE posts SET `title`=?, `desc`=?, `img`=?, `cat`=? WHERE `id` = ? AND `user_id` = ?";
-    const values = [
-      req.body.title,
-      req.body.desc,
-      req.body.img,
-      req.body.cat,
-    ];
-
-    db.query(q, [...values, postId, userInfo.id], (err, data) => {
-      if (err) return res.status(500).json(err);
-
-      return res.status(201).json("Post has been updated successfully");
-    });
+      const values = [
+        req.body.title,
+        req.body.desc,
+        req.body.img,
+        req.body.cat,
+        postId, // Asegúrate de incluir el postId aquí
+        userInfo.id, // Y el userInfo.id aquí
+      ];
+      
+      db.query(q, values, (err, data) => { // Y luego pasas `values` directamente
+        if (err) return res.status(500).json(err);
+      
+        return res.status(200).json("Post has been updated successfully"); // Cambiado a 200 OK
+      });
   });
 };
