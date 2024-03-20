@@ -17,7 +17,7 @@ cloudinary.config({
 
 
 const corsOptions = {
-  origin: "https://yismaeldiaz-portfolio.onrender.com", 
+  origin: ["https://yismaeldiaz-portfolio.onrender.com", "http://localhost:3000", "http://localhost:3001"], 
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true, 
   optionsSuccessStatus: 200 
