@@ -16,13 +16,8 @@ cloudinary.config({
 });
 
 
-const corsOptions = {
-  origin: ["https://yismaeldiaz-portfolio.onrender.com", "http://localhost:3000", "http://localhost:3001"], 
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true, 
-  optionsSuccessStatus: 200 
-};
-app.use(cors(corsOptions));
+
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
@@ -31,7 +26,7 @@ app.use("/api/posts", postRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
           
 
 app.listen(PORT, () => {
