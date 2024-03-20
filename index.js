@@ -14,7 +14,15 @@ cloudinary.config({
   api_key: process.env.CLOUDINARY_API_KEY, 
   api_secret: process.env.CLOUDINARY_API_SECRET 
 });
-app.use(cors());
+
+
+const corsOptions = {
+  origin: "https://yismaeldiaz-portfolio.onrender.com", 
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true, 
+  optionsSuccessStatus: 200 
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
